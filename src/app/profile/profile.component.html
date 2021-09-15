@@ -1,0 +1,298 @@
+<div class="profile">
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+
+    <nav class="sidebar">
+        <div class="text">
+            <img src={{imgProfile}}><br> {{nameProfile}}
+
+        </div>
+        <ul>
+
+            <li><a href="#" data-bs-toggle="collapse" id="btn_profile">Profile</a></li>
+            <li>
+                <a href="#" data-bs-toggle="collapse" href="#" class="feat-btn">Messages
+              <span class="fas fa-caret-down first"></span>
+            </a>
+                <ul class="feat-show ">
+                    <li><a href="#" data-bs-toggle="collapse" id="btn_new_message">New</a></li>
+                    <li><a href="#" data-bs-toggle="collapse" id="btn_messages">Messages</a></li>
+                </ul>
+            </li>
+            <li><a href="#" data-bs-toggle="collapse" id="btn_order_history">Order history</a></li>
+            <li><a href="#" data-bs-toggle="collapse" id="btn_payment">Payment information</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 p-5">
+            <div class="frm" style="margin-top: 30px;" id="profile_info">
+                <form action="#">
+
+                    <div class="row mb-3 d-flex justify-content-center align-content-center">
+                        <div class="col-md-6 d-flex flex-column align-items-center">
+                            <img [src]="imgURL || 'assets/imges/logo.png' " alt="" class="rounded-circle" style="width: 200px;height: 200px;" />
+                            <label for="image" class="form-label text-center mt-2"><i class="fa fa-upload fa-2x"></i></label>
+                            <input type="file" class="form-control" id="image" accept="image/*" (change)="preview(image.files);" hidden required #image>
+                            <span style="color:red;" *ngIf="message">{{message[0]}}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username" value="ahmed39mohamed" required #username>
+                        <span style="color:red;" *ngIf="message">{{message[1]}}</span>
+                    </div>
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-6 ">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name" value="ahmed" required #firstname>
+                            <span style="color:red;" *ngIf="message">{{message[2]}}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="Last Name" value="mohamed" required #lastname>
+                            <span style="color:red;" *ngIf="message">{{message[3]}}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Birthday</label>
+                        <input type="date" value="1985-07-14" class="form-control" id="birthday" required #birthday>
+                        <span style="color:red;" *ngIf="message">{{message[4]}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <div class="input-group">
+                            <select class="form-select input-group-text" style="border-top-right-radius: 0;border-bottom-right-radius: 0;" aria-label="select" required #codephone>
+                                <option >Code</option>
+                                <option value="+213" selected>+213</option>
+                                <option value="+216">+216</option>
+                              </select>
+                            <input type="tel" value="353699779" class="form-control" style="border-top-left-radius: 0;border-bottom-left-radius: 0;" id="phone" placeholder="Phone" max="9" min="9" required #phone>
+                        </div>
+                        <span style="color:red;" *ngIf="message">{{message[5]}}</span>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" value="ahmed39mohamed@zgoum.com" readonly required #email>
+                        <span style="color:red;" *ngIf="message">{{message[6]}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" required #password>
+                        <span style="color:red;" *ngIf="message">{{message[7]}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm password</label>
+                        <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" required #confirmpassword>
+                        <span style="color:red;" *ngIf="message">{{message[8]}}</span>
+                    </div>
+
+                    <input type="submit" value="Save" (click)="submit(username.value, firstname.value, lastname.value, birthday.value, codephone.value, phone.value, email.value, password.value, confirmpassword.value)">
+                    
+                </form>
+
+            </div>
+
+            <div class="frm" style="margin-top: 30px; display: none;" id="messages">
+
+                <!-- Start Message Item -->
+                <div class="mb-3 mb-2 p-3 bg-light d-flex msg-item" data-bs-toggle="modal" data-bs-target="#message_detail">
+                    <div class="image d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center" style="width:50px; height:50px; background-color: #f5f5f5;">
+                            <i class="fa fa-envelope" style="font-size: 25px; color: #14508e;"></i>
+                        </div>
+                        <span class="mt-1">12:30</span>
+                    </div>
+                    <div class="msg-text d-flex flex-column pl-3">
+                        <h5 class="m-0"><strong>Subject</strong></h5>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro rerum, incidunt praesentium laborum dicta repellendus quidem quam ...</p>
+                    </div>
+                </div>
+
+                <!-- End Message Item -->
+
+                <!-- Start Message Item -->
+                <div class="mb-3 mb-2 p-3 bg-light d-flex msg-item" data-bs-toggle="modal" data-bs-target="#message_detail">
+                    <div class="image d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center" style="width:50px; height:50px; background-color: #f5f5f5;">
+                            <i class="fa fa-envelope-open" style="font-size: 25px;"></i>
+                        </div>
+                        <span class="mt-1">12:30</span>
+                    </div>
+                    <div class="msg-text d-flex flex-column pl-3">
+                        <h5 class="m-0"><strong>Subject</strong></h5>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro rerum, incidunt praesentium laborum dicta repellendus quidem quam ...</p>
+                    </div>
+                </div>
+                <!-- End Message Item -->
+
+                <!-- Start Message Item -->
+                <div class="mb-3 mb-2 p-3 bg-light d-flex msg-item" data-bs-toggle="modal" data-bs-target="#message_detail">
+                    <div class="image d-flex flex-column align-items-center">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center" style="width:50px; height:50px; background-color: #f5f5f5;">
+                            <i class="fa fa-envelope-open" style="font-size: 25px;"></i>
+                        </div>
+                        <span class="mt-1">12:30</span>
+                    </div>
+                    <div class="msg-text d-flex flex-column pl-3">
+                        <h5 class="m-0"><strong>Subject</strong></h5>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro rerum, incidunt praesentium laborum dicta repellendus quidem quam ...</p>
+                    </div>
+                </div>
+                <!-- End Message Item -->
+
+            </div>
+
+            <div class="frm" style="margin-top: 30px; display: none;" id="new_message">
+                <form action="#">
+
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Write the subject of the message" required #subject>
+                        <span style="color:red;" *ngIf="messageNew">{{messageNew[0]}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="msg_txt" class="form-label">Message</label>
+                        <textarea class="form-control" id="msg_txt" rows="6" placeholder="Write a message here" #msg_txt></textarea>
+                        <span style="color:red;" *ngIf="messageNew">{{messageNew[1]}}</span>
+                    </div>
+
+                    <input type="submit" value="Send" (click)="sendMessageSubmit(subject.value, msg_txt.value)">
+                </form>
+            </div>
+
+
+            <div class="frm" style="margin-top: 30px; display: none;" id="payments">
+                <form action="#">
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-6 ">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name" required #firstnamePayment>
+                            <span style="color:red;" *ngIf="messagePayment">{{messagePayment[0]}}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="Last Name" required #lastnamePayment>
+                            <span style="color:red;" *ngIf="messagePayment">{{messagePayment[1]}}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <div class="input-group">
+                            <select class="form-select input-group-text" style="border-top-right-radius: 0;border-bottom-right-radius: 0;" aria-label="select" required #codephonePayment>
+                                <option selected>Code</option>
+                                <option value="+213">+213</option>
+                                <option value="+216">+216</option>
+                              </select>
+                            <input type="tel" class="form-control" style="border-top-left-radius: 0;border-bottom-left-radius: 0;" id="phone" placeholder="Phone" max="9" min="9" required #phonePayment>
+                        </div>
+                        <span style="color:red;" *ngIf="messagePayment">{{messagePayment[2]}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="shiping_address" class="form-label">Shiping Address</label>
+                        <input type="text" class="form-control" id="shiping_address" placeholder="Shiping Address" required #shiping_addressPayment>
+                        <span style="color:red;" *ngIf="messagePayment">{{messagePayment[3]}}</span>
+                    </div>
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="zip_code" class="form-label">Zip Code</label>
+                                <input type="text" class="form-control" id="zip_code" placeholder="Zip Code" required #zip_codePayment>
+                                <span style="color:red;" *ngIf="messagePayment">{{messagePayment[4]}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" placeholder="City" required #cityPayment>
+                                <span style="color:red;" *ngIf="messagePayment">{{messagePayment[5]}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="state" class="form-label">State</label>
+                                <select class="form-select input-group-text" style="padding: 0.5rem 0.75rem;" aria-label="select" required #statePayment>
+                                    <option selected>State</option>
+                                    <option value="16">Alger</option>
+                                    <option value="39">Eloued</option>
+                                  </select>
+                                <span style="color:red;" *ngIf="messagePayment">{{messagePayment[6]}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h3>Card Edahabia</h3>
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="code" class="form-label">Code</label>
+                                <input type="text" class="form-control" id="code" placeholder="Code" required #codePayment>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="exp_date" class="form-label">Exp Date</label>
+                                <input type="text" class="form-control" placeholder="MM/YY" id="exp_date" required #exp_datePayment>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="cvv_code" class="form-label">CVV Code</label>
+                                <input type="text" class="form-control" id="cvv_code" placeholder="CVV Code" required #cvv_codePayment>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Save" (click)="savePaymentSubmit(firstnamePayment.value, lastnamePayment.value, phonePayment.value, codephonePayment.value, shiping_addressPayment.value, zip_codePayment.value, cityPayment.value, statePayment.value, codePayment.value, exp_datePayment.value, cvv_codePayment.value)">
+                </form>
+            </div>
+
+
+
+
+            <!-- End -->
+        </div>
+
+    </div>
+
+
+    <div class="modal" tabindex="-1" id="message_detail">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="subject" value="Subject" readonly required #subject>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="msg_txt" class="form-label">Message</label>
+                        <textarea class="form-control" id="msg_txt" rows="6" readonly #msg_txt> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consectetur omnis pariatur repellendus, autem eveniet aspernatur nulla nam harum cum sed sint quae similique? Nisi fugit asperiores ab rerum consectetur!
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
