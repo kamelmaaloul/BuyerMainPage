@@ -16,15 +16,26 @@ export class ProfileComponent implements OnInit {
   url: string = '';
   imgURL: any;
 
-  username: string = 'ahmed39mohamed';
-  firstname: string = '';
-  lastname: string = '';
-  birthday: Date;
-  codephone: string = '';
-  phone: string = '';
-  email: string = '';
+  username_data: string = 'ahmed39mohamed';
+  firstname_data: string = 'ahmed';
+  lastname_data: string = 'mohamed';
+  birthday_data: Date;
+  codephone_data: string = '';
+  phone_data: string = '';
+  email_data: string = '';
   password: string = '';
   confirmpassword: string = '';
+  
+  firstname_data_payment: string = 'ahmed';
+  lastname_data_payment: string = 'mohamed';
+  phone_data_payment: string = '';
+  shiping_address_data_payment: Date;
+  zip_code_data_payment: string = '';
+  city_data_payment: string = '';
+  state_data_payment: string = '';
+  Code_data_payment: string = '';
+  exp_date_data_payment: string = '';
+  cvv_code_data_payment: string = '';
 
   preview(files) {
     if (files.length === 0)
@@ -103,10 +114,20 @@ export class ProfileComponent implements OnInit {
       this.message[8] = '';
     }
 
-    for (let i = 0; i < this.message.length; i++) {
-      this.message[i] != '';
-      return;
+    console.log(this.message)
+    for (let i = 1; i < this.message.length; i++) {
+      if (this.message[i] != '') {
+        return;
+      }
     }
+
+    this.username_data = username;
+    this.firstname_data  = firstname;
+    this.lastname_data = lastname;
+    this.birthday_data = birthday;
+    this.codephone_data  = codephone;
+    this.phone_data = phone;
+    this.email_data = email;
 
     //Code Here
 
@@ -155,7 +176,7 @@ export class ProfileComponent implements OnInit {
     } else if (!codephonePayment.match("[+]{1}[0-9]{1,4}")) {
       this.messagePayment[2] = 'Wrong Code phone number';
     } else {
-      this.message[2] = '';
+      this.messagePayment[2] = '';
     }
 
     if (shiping_addressPayment == '') {
@@ -182,10 +203,22 @@ export class ProfileComponent implements OnInit {
       this.messagePayment[6] = '';
     }
 
-    for (let i = 0; i < this.messagePayment.length; i++) {
-      this.messagePayment[i] != '';
+    console.log(this.messagePayment)
+    for (let i = 1; i < this.messagePayment.length; i++) {
+      if (this.messagePayment[i] != '')
       return;
     }
+
+    this.firstname_data_payment  = firstnamePayment;
+    this.lastname_data_payment = lastnamePayment;
+    this.phone_data_payment = phonePayment;
+    this.shiping_address_data_payment = shiping_addressPayment;
+    this.zip_code_data_payment = zip_codePayment;
+    this.city_data_payment = cityPayment;
+    this.state_data_payment = statePayment;
+    this.Code_data_payment = codePayment;
+    this.exp_date_data_payment = exp_datePayment;
+    this.cvv_code_data_payment = cvv_codePayment;
 
 
     //Code Here 
@@ -209,14 +242,27 @@ export class ProfileComponent implements OnInit {
       $(e.currentTarget).addClass("active").siblings().removeClass("active");
   });
 
-  $('#btn_profile').click(function() {
+  $('#btnsave_infoprofile').click(function() {
+    $('#profile_info_detail').show();
+    $('#profile_info').hide();
+});
+  $('#btn_profile_edit').click(function() {
+    $('#profile_info_detail').hide();
     $('#profile_info').show();
+});
+
+  $('#btn_profile').click(function() {
+    $('#profile_info_detail').show();
+    $('#payments_detail').hide();
+    $('#profile_info').hide();
     $('#messages').hide();
     $('#payments').hide();
     $('#new_message').hide();
 });
 
   $('#btn_messages').click(function() {
+    $('#payments_detail').hide();
+    $('#profile_info_detail').hide();
     $('#profile_info').hide();
     $('#new_message').hide();
     $('#payments').hide();
@@ -224,6 +270,8 @@ export class ProfileComponent implements OnInit {
 });
 
   $('#btn_new_message').click(function() {
+    $('#payments_detail').hide();
+    $('#profile_info_detail').hide();
     $('#profile_info').hide();
     $('#messages').hide();
     $('#payments').hide();
@@ -231,10 +279,22 @@ export class ProfileComponent implements OnInit {
 });
 
   $('#btn_payment').click(function() {
+    $('#profile_info_detail').hide();
     $('#profile_info').hide();
     $('#messages').hide();
     $('#new_message').hide();
+    $('#payments').hide();
+    $('#payments_detail').show();
+});
+
+  $('#edit_payment').click(function() {
     $('#payments').show();
+    $('#payments_detail').hide();
+});
+
+  $('#save_payment').click(function() {
+    $('#payments').hide();
+    $('#payments_detail').show();
 });
   
   }

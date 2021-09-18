@@ -10,7 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminsComponent } from './admins/admins.component';
 import { AddadminComponent } from './addadmin/addadmin.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { RrrComponent } from './sendMessages/sendMessages.component';
 const routes: Routes = [
   {path:'', redirectTo:'products',pathMatch:'full'},
   {path:'products',component: BodyComponent },
@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'profile',component: ProfileComponent},
   { path: 'products/:id',component: ProductdetailsComponent},
   { path: 'product/:category',component: ProductbycategoryComponent},
-
+  {path:'sendMessage',component:RrrComponent},
   {path:"cart",component:CartComponent},
   {path: "**", component: PageNotFoundComponent}
 ];

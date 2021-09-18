@@ -5,7 +5,7 @@
 
     <nav class="sidebar">
         <div class="text">
-            <img src={{imgProfile}}><br> {{nameProfile}}
+            <img [src]="imgURL || 'assets/imges/logo.png'"><br> {{firstname_data}} {{lastname_data}}
 
         </div>
         <ul>
@@ -16,7 +16,7 @@
               <span class="fas fa-caret-down first"></span>
             </a>
                 <ul class="feat-show ">
-                    <li><a href="#" data-bs-toggle="collapse" id="btn_new_message">New</a></li>
+                    <li><a routerLink="../sendMessage" data-bs-toggle="collapse" id="btn_new_message">New</a></li>
                     <li><a href="#" data-bs-toggle="collapse" id="btn_messages">Messages</a></li>
                 </ul>
             </li>
@@ -28,7 +28,54 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-6 p-5">
-            <div class="frm" style="margin-top: 30px;" id="profile_info">
+            <div class="frm" style="margin-top: 30px;" id="profile_info_detail">
+                <form action="#">
+
+                    <div class="row mb-3 d-flex justify-content-center align-content-center">
+                        <div class="col-md-6 d-flex flex-column align-items-center">
+                            <img [src]="imgURL || 'assets/imges/logo.png' " alt="" class="rounded-circle" style="width: 200px;height: 200px;" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <span class="form-control profile_txt">{{username_data}}</span>
+                    </div>
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-6 ">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <span class="form-control profile_txt" style="width: 94%;">{{firstname_data}}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <span class="form-control profile_txt">{{lastname_data}}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Birthday</label>
+                        <span class="form-control profile_txt">{{birthday_data}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <span class="form-control profile_txt">{{codephone_data}} {{phone_data}}</span>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <span class="form-control profile_txt">{{email_data}}</span>
+                    </div>
+
+                    <input type="submit" value="Edit" id="btn_profile_edit">
+                    
+                </form>
+
+            </div>
+
+            <div class="frm" style="margin-top: 30px;display: none;" id="profile_info">
                 <form action="#">
 
                     <div class="row mb-3 d-flex justify-content-center align-content-center">
@@ -49,7 +96,7 @@
                     <div class="row mb-3 p-3">
                         <div class="col-md-6 ">
                             <label for="firstname" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstname" placeholder="First Name" value="ahmed" required #firstname>
+                            <input style="width: 94%;" type="text" class="form-control" id="firstname" placeholder="First Name" value="ahmed" required #firstname>
                             <span style="color:red;" *ngIf="message">{{message[2]}}</span>
                         </div>
                         <div class="col-md-6">
@@ -97,7 +144,7 @@
                         <span style="color:red;" *ngIf="message">{{message[8]}}</span>
                     </div>
 
-                    <input type="submit" value="Save" (click)="submit(username.value, firstname.value, lastname.value, birthday.value, codephone.value, phone.value, email.value, password.value, confirmpassword.value)">
+                    <input type="submit" value="Save" (click)="submit(username.value, firstname.value, lastname.value, birthday.value, codephone.value, phone.value, email.value, password.value, confirmpassword.value)" id="btnsave_infoprofile">
                     
                 </form>
 
@@ -173,13 +220,89 @@
             </div>
 
 
+            <div class="frm" style="margin-top: 30px; display: none;" id="payments_detail">
+                <form action="#">
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-6 ">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <span class="form-control profile_txt" style="width: 94%;">{{firstname_data_payment}}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <span class="form-control profile_txt">{{lastname_data_payment}}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <span class="form-control profile_txt">{{phone_data_payment}}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="shiping_address" class="form-label">Shiping Address</label>
+                        <span class="form-control profile_txt">{{shiping_address_data_payment}}</span>
+                    </div>
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="zip_code" class="form-label">Zip Code</label>
+                                <span style="width: 94%;" class="form-control profile_txt">{{zip_code_data_payment}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="city" class="form-label">City</label>
+                                <span style="width: 94%;" class="form-control profile_txt">{{city_data_payment}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="state" class="form-label">State</label>
+                                  <span class="form-control profile_txt">{{state_data_payment}}</span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h3>Card Edahabia</h3>
+
+                    <div class="row mb-3 p-3">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="code" class="form-label">Code</label>
+                                <span style="width: 94%;" class="form-control profile_txt">{{Code_data_payment}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="exp_date" class="form-label">Exp Date</label>
+                                <span style="width: 94%;" class="form-control profile_txt">{{exp_date_data_payment}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="cvv_code" class="form-label">CVV Code</label>
+                                <span class="form-control profile_txt">{{cvv_code_data_payment}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Edit" id="edit_payment">
+                </form>
+            </div>
+
             <div class="frm" style="margin-top: 30px; display: none;" id="payments">
                 <form action="#">
 
                     <div class="row mb-3 p-3">
                         <div class="col-md-6 ">
                             <label for="firstname" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstname" placeholder="First Name" required #firstnamePayment>
+                            <input type="text" style="width: 94%;" class="form-control" id="firstname" placeholder="First Name" required #firstnamePayment>
                             <span style="color:red;" *ngIf="messagePayment">{{messagePayment[0]}}</span>
                         </div>
                         <div class="col-md-6">
@@ -212,14 +335,14 @@
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="zip_code" class="form-label">Zip Code</label>
-                                <input type="text" class="form-control" id="zip_code" placeholder="Zip Code" required #zip_codePayment>
+                                <input style="width: 94%;" type="text" class="form-control" id="zip_code" placeholder="Zip Code" required #zip_codePayment>
                                 <span style="color:red;" *ngIf="messagePayment">{{messagePayment[4]}}</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="city" class="form-label">City</label>
-                                <input type="text" class="form-control" id="city" placeholder="City" required #cityPayment>
+                                <input style="width: 94%;" type="text" class="form-control" id="city" placeholder="City" required #cityPayment>
                                 <span style="color:red;" *ngIf="messagePayment">{{messagePayment[5]}}</span>
                             </div>
                         </div>
@@ -245,13 +368,13 @@
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="code" class="form-label">Code</label>
-                                <input type="text" class="form-control" id="code" placeholder="Code" required #codePayment>
+                                <input style="width: 94%;" type="text" class="form-control" id="code" placeholder="Code" required #codePayment>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="exp_date" class="form-label">Exp Date</label>
-                                <input type="text" class="form-control" placeholder="MM/YY" id="exp_date" required #exp_datePayment>
+                                <input style="width: 94%;" type="text" class="form-control" placeholder="MM/YY" id="exp_date" required #exp_datePayment>
                             </div>
                         </div>
 
@@ -263,7 +386,7 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="Save" (click)="savePaymentSubmit(firstnamePayment.value, lastnamePayment.value, phonePayment.value, codephonePayment.value, shiping_addressPayment.value, zip_codePayment.value, cityPayment.value, statePayment.value, codePayment.value, exp_datePayment.value, cvv_codePayment.value)">
+                    <input type="submit" value="Save" id="save_payment" (click)="savePaymentSubmit(firstnamePayment.value, lastnamePayment.value, phonePayment.value, codephonePayment.value, shiping_addressPayment.value, zip_codePayment.value, cityPayment.value, statePayment.value, codePayment.value, exp_datePayment.value, cvv_codePayment.value)">
                 </form>
             </div>
 

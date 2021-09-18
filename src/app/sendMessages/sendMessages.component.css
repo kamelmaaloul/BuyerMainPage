@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  
+}
+body {
+  background-color: #e8e7e3;
+}
+.btn.click{
+  left: 300px;
+}
+.btn span{
+  color: white;
+  font-size: 28px;
+  line-height: 45px;
+}
+.btn.click span:before{
+  content: '\f00d';
+}
+.content3{
+    /*position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-55%,-80%);*/
+    margin-top: 0%;
+    margin-left: 36%;
+    color: #202020;
+    z-index: -1;
+    width: 55%;
+}
+.content3 .header{
+  font-size: 45px;
+  font-weight: 600;
+}
+.content3 p{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+.content4{
+    /*position: absolute;*/
+    margin-top: -610px;
+    margin-left: 5%;
+    color: #202020;
+    z-index: -1;
+    /*text-align: center;*/
+    width: 30%;
+    max-height: 600px;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+.content4 .header{
+    font-size: 45px;
+    font-weight: 600;
+}
+.content4 p{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/*
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: grey;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}*/
+.he{
+    text-align: left;
+    margin-top: 20px;
+}
+.he .he-mes{
+    width: max-content;
+    background-color: rgb(180, 235, 191);
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    
+}
+.my_account{
+    text-align: right;
+    margin-top: 30px;
+}
+.my_account .my_account-mes{
+    width: max-content;
+    background-color: rgb(182, 185, 253);
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+}
+.book-messages {
+    text-align: left;
+    border-radius: 10px;
+    padding: 10px;
+}
+.book-messages .img-recever,  .img-recever{
+    width: 45px;
+    background-color: blueviolet;
+    background-image: url("profileTest.png");
+    background-size: cover;
+    padding: 10px;
+    border-radius: 30px;
+    margin-right: 5px;
+}
+.book-messages:hover{
+    background-color: rgb(255, 255, 255);
+}
+div.frm {
+    display: block;
+    border-radius: 10px;
+    background-color: #d3d0d0;
+    padding: 20px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 550px;
+    height: 550px;
+}
+div.frm1 {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    height: 600px;
+    border: 1px solid #3b5911;
+}
+
+img.not {
+  margin-top: 15px;
+  margin-left: 1400px;
+  height: 50px;
+  width: 50px;
+}
+
+img.log_out {
+  margin-top: -55px;
+  margin-bottom: 1000px;
+  margin-left: 1500px;
+  height: 50px;
+  width: 50px;
+   
+}
+#send-input{
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(119, 10, 10);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#send-btn{
+    margin-left: 1%;
+    width: 9%;
+    background-color: grey;
+    color: black;
+    padding: 14px 10px;
+    border: none;
+    border-radius: 4px;
+}
+#send-btn:hover {
+    background-color: #45a049;
+}

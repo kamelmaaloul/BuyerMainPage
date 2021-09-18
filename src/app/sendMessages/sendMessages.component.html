@@ -1,0 +1,44 @@
+<app-entreprise-main-control></app-entreprise-main-control>
+<div class="content3">
+    <!--<div class="header">Seller Page template</div>
+    <p>test version</p>-->
+    <div class="frm">
+        <div *ngFor="let mes of messages;" class="{{mes.sender}}" >
+            <input *ngIf="mes.sender==='he'" class="img-recever" type="submit" value=" ">
+            <label class="{{mes.sender}}-mes" for="lname">{{mes.message}}</label>
+        </div>
+        <!--<div class="sender">
+            <label class="sender-mes" for="lname">test message</label>
+        </div>-->
+    </div>
+    <div class="send-mes">
+        <input id="send-input" type="text" name="lastname" (keyup.enter)="sendMessage(messagesend.value);messagesend.value='';" placeholder="Type your message here.."#messagesend>
+        <input id="send-btn" type="submit" value="Send" (click)="sendMessage(messagesend.value);messagesend.value='';">
+    </div>
+</div>
+<div class="content4">
+    <!--<div class="header">Seller Page template</div>
+    <p>test version</p>-->
+    <div class="frm1">
+        <div class="book-messages" *ngFor="let pro of Serviceprofiles.getInformations()" (click)="show_Messages(pro.name_recive)">
+            <input class="img-recever"type="submit" value=" ">
+            <label for="fname">{{pro.name_recive}} : </label>
+            <b> test message</b>
+        </div>
+        <!--<div class="book-messages">
+            <input class="img-recever"type="submit" value=" ">
+            <label for="fname">Test Name: </label>
+            <b>test message</b>
+        </div>
+        <div class="book-messages">
+            <input class="img-recever"type="submit" value=" ">
+            <label for="fname">Test Name: </label>
+            <b>test message</b>
+        </div>
+        <div class="book-messages">
+            <input class="img-recever"type="submit" value=" ">
+            <label for="fname">Test Name: </label>
+            <b>test message</b>
+        </div>-->
+    </div>
+</div>
